@@ -76,7 +76,7 @@
   }
   /* main-section */
   .main-section {
-    height: 80vh;
+    height: 75vh;
   }
   .main-section .title {
     font-size: 1.9em;
@@ -121,37 +121,22 @@
   }
   #section02 .content .txt-wrap {
     width: 100%;
-    margin: 50px 0 0 0;
+    padding-top: 50px;
   }
   #section02 .more-wrap {
     width: 35%;
     margin: 0;
   }
-  /* section03 */
-  #section03 .txt-wrap .title {
-    font-size: 4em;
+  #section02 .content .img-wrap {
+    display: flex;
+    justify-content: center;
   }
-  #section03 .txt-wrap .desc {
-    font-size: 1.4em;
+  #section02 .img-wrap .img-obj1 {
+    width: 500px;
+    height: 410px;
   }
 
   /* section03 */
-
-  .swiperSec3 .swiper-slide {
-    width: 100%;
-    height: 100%;
-  }
-  .swiperSec3 .swiper-slide {
-    width: 100%;
-    height: 100%;
-    flex-direction: column-reverse;
-    justify-content: space-around;
-  }
-  .swiperSec3 .swiper-pagination {
-    top: auto;
-    bottom: 30px;
-    transform: translate(-50%, -50%);
-  }
   #section03 {
     height: 100vh;
   }
@@ -164,6 +149,9 @@
   }
   #section03 .txt-wrap .title {
     font-size: 2.4em;
+  }
+  #section03 .txt-wrap .desc {
+    font-size: 1.4em;
   }
   #section03 .txt-wrap .keyword {
     width: 100%;
@@ -181,6 +169,18 @@
   }
   #section03 .img-wrap .img-obj1 {
     margin: 0;
+  }
+
+  .swiperSec3 .swiper-slide {
+    width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+  }
+  .swiperSec3 .swiper-pagination {
+    top: auto;
+    bottom: 30px;
+    transform: translate(-50%, -50%);
   }
 
   /* section04 */
@@ -287,6 +287,7 @@
   #footer .fnb .util-menu .tit {
     color: #666;
   }
+
   /* +버튼 : before-가로, after-세로 */
   #footer .main-menu::before,
   #footer .main-menu::after {
@@ -332,9 +333,7 @@
   .re990 {
     display: none;
   }
-  #section03 .img-wrap {
-    width: 100%;
-  }
+
   #section03 .img-wrap .cube-img {
     width: 80%;
   }
@@ -367,6 +366,13 @@
   }
 }
 @media screen and (max-width: 500px) {
+  #section01 .img-obj2,
+  #section01 .img-obj5 {
+    left: -150%;
+  }
+  #section02 .img-obj6 {
+    right: 15%;
+  }
   #section03 .img-wrap {
     width: 100%;
   }

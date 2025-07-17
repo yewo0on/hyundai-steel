@@ -350,9 +350,7 @@ body {
 #section02 .content .txt-wrap {
   width: 50%;
 }
-#section02 .content .img-wrap {
-  width: 50%;
-}
+
 #section02 .more-wrap {
   display: flex;
   justify-content: space-between;
@@ -377,15 +375,16 @@ body {
   height: 100%;
 }
 
-#section02 .img-wrap {
+#section02 .content .img-wrap {
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   position: relative;
 }
+
 #section02 .img-obj1 {
   width: 100%;
-  height: 65%;
 }
 #section02 .obj2-wrap {
   width: 100%;
@@ -399,7 +398,7 @@ body {
   max-width: 400px;
 }
 #section02 .img-obj3 {
-  left: 8%;
+  left: 0;
   top: 18%;
 }
 #section02 .img-obj4 {
