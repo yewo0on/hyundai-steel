@@ -1,17 +1,20 @@
-/* 반응형 fnb accodian */
+/* fnb accodian */
 $(document).ready(function () {
   $(".main-menu").click(function () {
     $(this).children(".sub").slideToggle();
   });
 });
 
+/* header menu button */
 const menuBtn = document.querySelector(".menu-btn");
 menuBtn.addEventListener("click", () => {
   menuBtn.classList.toggle("active");
 });
 
 /* ScrollTrigger, ScrollSmoother 등록 */
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+});
 
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
