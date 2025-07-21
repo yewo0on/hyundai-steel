@@ -160,21 +160,23 @@ body {
   justify-content: space-between;
   cursor: pointer;
 }
-#header .header-right .menu-btn > span {
+#header .header-right .menu-btn span {
   width: 100%;
   height: 3px;
   background: #000;
   display: block;
-  transition: all 1s;
+  transition: all 0.5s ease;
+  transform: rotate(0);
+  transform-origin: center;
 }
 #header .header-right .menu-btn.active span:first-child {
-  transform: translate(0, 10px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
+}
+#header .header-right .menu-btn.active span:last-child {
+  transform: translateY(-9px) rotate(-45deg);
 }
 #header .header-right .menu-btn.active span:nth-child(2) {
   display: none;
-}
-#header .header-right .menu-btn.active span:last-child {
-  transform: translate(0, -9px) rotate(-45deg);
 }
 
 /* main-banner */
@@ -256,6 +258,7 @@ body {
 
 /* section01 */
 #section01 .content {
+  position: relative;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -267,33 +270,36 @@ body {
   padding-bottom: 15%;
 }
 #section01 .img-wrap {
-  width: 60%;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
-
 #section01 .img-obj1 {
-  width: 68%;
-  right: 15%;
+  width: 32%;
+  right: 20%;
   top: 0;
 }
 #section01 .img-obj2 {
-  width: 30%;
-  right: 100%;
-  top: -20px;
+  width: 15%;
+  left: 25%;
+  top: -10px;
 }
 #section01 .img-obj3 {
-  width: 38%;
-  right: 0;
+  width: 18%;
+  right: 10%;
   top: 0;
 }
 #section01 .img-obj4 {
-  width: 35%;
-  right: 0;
+  width: 17%;
+  right: 7%;
   bottom: 15%;
 }
 #section01 .img-obj5 {
-  width: 20%;
-  right: 70%;
+  width: 10%;
+  right: 45%;
+  /* left: 44%; */
   bottom: 18%;
 }
 #section01 .colorLight {
@@ -350,7 +356,10 @@ body {
 #section02 .content .txt-wrap {
   width: 50%;
 }
-
+#section02 .bg-img {
+  display: flex;
+  justify-content: center;
+}
 #section02 .more-wrap {
   display: flex;
   justify-content: space-between;
@@ -393,13 +402,16 @@ body {
   bottom: 40%;
 }
 #section02 .img-obj2 {
-  width: 50%; /* 부모의 30%로 설정 */
-  height: auto; /* 비율 유지 */
+  width: 50%;
+  height: auto;
   max-width: 400px;
 }
 #section02 .img-obj3 {
+  width: 25%;
   left: 0;
   top: 18%;
+  min-width: 100px;
+  min-height: 90px;
 }
 #section02 .img-obj4 {
   width: 33%;
@@ -410,6 +422,8 @@ body {
   width: 17%;
   right: 0;
   top: 30%;
+  min-width: 97px;
+  min-height: 100px;
 }
 #section02 .bg-color {
   height: 100%;

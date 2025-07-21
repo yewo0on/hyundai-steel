@@ -286,6 +286,7 @@ ScrollTrigger.matchMedia({
 });
 
 /* section03 */
+
 let previousIndex = null;
 // 1. swiper 초기화
 const swiperSec3 = new Swiper(".swiperSec3", {
@@ -313,19 +314,34 @@ const swiperSec3 = new Swiper(".swiperSec3", {
 // 2. 슬라이드 수 계산 (한 번만 실행)
 const numSlides = swiperSec3.slides.length;
 
-// 3. ScrollTrigger는 한 번만 생성
-ScrollTrigger.create({
-  trigger: "#section03",
-  start: "center center",
-  end: `+=${numSlides * 100}%`, //   더 직관적
-  scrub: 1,
-  pin: true,
-  anticipatePin: 1,
-  markers: false,
-  onUpdate: (self) => {
-    const progress = self.progress;
-    const index = Math.round(progress * (numSlides - 1));
-    swiperSec3.slideTo(index);
+// 3. 조건에 따라 ScrollTrigger 생성
+let scrollTriggerInstance;
+
+ScrollTrigger.matchMedia({
+  // 768px 이상일 때
+  "(min-width: 768px)": function () {
+    scrollTriggerInstance = ScrollTrigger.create({
+      trigger: "#section03",
+      start: "center center",
+      end: `+=${numSlides * 100}%`, //   더 직관적
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+      markers: false,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const index = Math.round(progress * (numSlides - 1));
+        swiperSec3.slideTo(index);
+      },
+    });
+  },
+
+  // 768px 이하일 때는 스크롤 트리거 제거
+  "(max-width: 768px)": function () {
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill(); // 모바일 전환 시 제거
+      scrollTriggerInstance = null;
+    }
   },
 });
 
