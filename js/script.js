@@ -345,10 +345,10 @@ ScrollTrigger.matchMedia({
   },
 });
 
-// 4. 슬라이드 등장 애니메이션 함수
 // 초기 애니메이션 한번 실행
 fadeUp(swiperSec3.activeIndex);
 
+/** 4. 슬라이드 등장 애니메이션 함수 */
 function fadeUp(curIndex, preIndex) {
   const slides = document.querySelectorAll("#section03 .swiper-slide");
   const prevSlide = slides[preIndex];
