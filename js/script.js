@@ -323,12 +323,12 @@ const numSlides = swiperSec3.slides.length;
 let scrollTriggerInstance;
 
 ScrollTrigger.matchMedia({
-  // 768px 이상일 때
+  // 768px 이상일 때: ScrollTrigger 활성화
   "(min-width: 768px)": function () {
-    scrollTriggerInstance = ScrollTrigger.create({
+    window.scrollTriggerInstance = ScrollTrigger.create({
       trigger: "#section03",
       start: "center center",
-      end: `+=${numSlides * 100}%`, //   더 직관적
+      end: `+=${numSlides * 100}%`,
       scrub: 1,
       pin: true,
       anticipatePin: 1,
@@ -341,13 +341,37 @@ ScrollTrigger.matchMedia({
     });
   },
 
-  // 767px 이하일 때는 스크롤 트리거 제거
+  // 767px 이하일 때: ScrollTrigger 완전 제거
   "(max-width: 767px)": function () {
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill(true); // 강제 제거
-      scrollTriggerInstance = null;
-      ScrollTrigger.refresh(); // 내부 상태 업데이트
+    // 1. section03 관련 ScrollTrigger 모두 제거
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.trigger && trigger.trigger.id === "section03") {
+        trigger.kill(true);
+      }
+    });
+
+    // 2. 남아 있는 pin 스타일 제거
+    const section = document.getElementById("section03");
+    if (section) {
+      section.style.position = "";
+      section.style.top = "";
+      section.style.left = "";
+      section.style.width = "";
+      section.style.transform = "";
+      section.style.zIndex = "";
+      section.style.margin = "";
+      section.style.maxWidth = "";
     }
+
+    // 3. 관련 pin-spacer 제거 (section03에만 해당)
+    document.querySelectorAll(".pin-spacer").forEach((spacer) => {
+      if (spacer.contains(section)) {
+        spacer.replaceWith(section); // section03를 원래 자리로 이동
+      }
+    });
+
+    // 4. ScrollTrigger 내부 상태 갱신
+    ScrollTrigger.refresh();
   },
 });
 
