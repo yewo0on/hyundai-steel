@@ -109,7 +109,6 @@ const sec5Title = createTitleAnimation("#section05", 1);
 /* --- 섹션별 이벤트 --- */
 
 /* main-banner */
-
 /* 오디오 버튼 동작 */
 const mVideo = document.querySelector("#main-video");
 const mAudio = document.querySelector("#main-audio");
@@ -286,8 +285,8 @@ ScrollTrigger.matchMedia({
 });
 
 /* section03 */
-
 let previousIndex = null;
+
 // 1. swiper 초기화
 const swiperSec3 = new Swiper(".swiperSec3", {
   loop: false,
@@ -303,6 +302,10 @@ const swiperSec3 = new Swiper(".swiperSec3", {
     clickable: true,
   },
   on: {
+    init: function () {
+      // Swiper 초기화 완료 후 애니메이션 실행
+      fadeUp(this.activeIndex);
+    },
     slideChange: function () {
       const currentIndex = this.activeIndex;
       const previousIndex = this.previousIndex;
@@ -310,6 +313,8 @@ const swiperSec3 = new Swiper(".swiperSec3", {
     },
   },
 });
+// Swiper 수동 초기화 (init 이벤트가 동작하려면 반드시 필요)
+swiperSec3.init();
 
 // 2. 슬라이드 수 계산 (한 번만 실행)
 const numSlides = swiperSec3.slides.length;
@@ -344,9 +349,6 @@ ScrollTrigger.matchMedia({
     }
   },
 });
-
-// 초기 애니메이션 한번 실행
-fadeUp(swiperSec3.activeIndex);
 
 /** 4. 슬라이드 등장 애니메이션 함수 */
 function fadeUp(curIndex, preIndex) {
