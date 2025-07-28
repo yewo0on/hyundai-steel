@@ -341,11 +341,12 @@ ScrollTrigger.matchMedia({
     });
   },
 
-  // 768px 이하일 때는 스크롤 트리거 제거
-  "(max-width: 768px)": function () {
+  // 767px 이하일 때는 스크롤 트리거 제거
+  "(max-width: 767px)": function () {
     if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill(); // 모바일 전환 시 제거
+      scrollTriggerInstance.kill(true); // 강제 제거
       scrollTriggerInstance = null;
+      ScrollTrigger.refresh(); // 내부 상태 업데이트
     }
   },
 });
