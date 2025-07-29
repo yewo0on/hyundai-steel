@@ -458,8 +458,9 @@ const swiperSec5 = new Swiper(".swiperSec5", {
   allowTouchMove: true, // 터치 허용 여부
   loopAdditionalSlides: 6, // 추가 슬라이드 복제 → 마지막 슬라이드에서 멈칫하는 현상 방지
   autoplay: {
-    delay: 0, // 끊기지 않고 계속 이동
+    delay: 1, // 끊기지 않고 계속 이동
     disableOnInteraction: false, // 사용자가 마우스 드래그해도 다시 재생됨
+    pauseOnMouseEnter: false,
   },
 
   breakpoints: {
@@ -473,20 +474,10 @@ const swiperSec5 = new Swiper(".swiperSec5", {
     1024: {
       slidesPerView: 6,
     },
-    1440: {
+    1920: {
       slidesPerView: 7,
     },
-    1920: {
-      slidesPerView: 10, // 큰 화면에서 빈 공간 방지
-    },
   },
-});
-
-const mainMenu = document.querySelectorAll(".main-menu");
-mainMenu.forEach((menu) => {
-  menu.addEventListener("click", () => {
-    menu.classList.toggle("active");
-  });
 });
 
 /* swiper 이벤트 */
@@ -496,3 +487,11 @@ mainMenu.forEach((menu) => {
 // swiperWrapper05.addEventListener("mouseleave", function () {
 //   swiperSec5.autoplay.start();
 // });
+
+// menu 버튼 클릭 이벤트 구현
+const mainMenu = document.querySelectorAll(".main-menu");
+mainMenu.forEach((menu) => {
+  menu.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+});
