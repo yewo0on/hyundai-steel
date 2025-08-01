@@ -343,30 +343,24 @@ ScrollTrigger.matchMedia({
 
   // 767px 이하일 때: ScrollTrigger 완전 제거
   "(max-width: 767px)": function () {
-    // 1. section03 관련 ScrollTrigger 모두 제거
+    const section = document.getElementById("section03");
+
+    // 1. section03 관련 ScrollTrigger 모두 제거 (조건 없이 trigger에 포함되기만 하면)
     ScrollTrigger.getAll().forEach((trigger) => {
-      if (trigger.trigger && trigger.trigger.id === "section03") {
+      if (trigger.trigger && section && section.contains(trigger.trigger)) {
         trigger.kill(true);
       }
     });
 
-    // 2. 남아 있는 pin 스타일 제거
-    const section = document.getElementById("section03");
+    // 2. section03 자체 스타일 제거 (모든 스타일 제거)
     if (section) {
-      section.style.position = "";
-      section.style.top = "";
-      section.style.left = "";
-      section.style.width = "";
-      section.style.transform = "";
-      section.style.zIndex = "";
-      section.style.margin = "";
-      section.style.maxWidth = "";
+      section.removeAttribute("style");
     }
 
-    // 3. 관련 pin-spacer 제거 (section03에만 해당)
+    // 3. pin-spacer 제거
     document.querySelectorAll(".pin-spacer").forEach((spacer) => {
-      if (spacer.contains(section)) {
-        spacer.replaceWith(section); // section03를 원래 자리로 이동
+      if (section && spacer.contains(section)) {
+        spacer.replaceWith(section);
       }
     });
 
